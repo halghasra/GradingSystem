@@ -1,6 +1,8 @@
+
 import java.util.Scanner;
 
 public class UserInterface {
+
     private GradeRegister register;
     private Scanner scanner;
 
@@ -19,17 +21,20 @@ public class UserInterface {
         while (true) {
             System.out.print("Points: ");
             String input = scanner.nextLine();
-
-            if (input.equals("")) break;
+            if (input.equals("")) {
+                break;
+            }
 
             int points = Integer.valueOf(input);
 
             if (points < 0 || points > 100) {
-                System.out.println("Impossible Number.");
+                System.out.println("Impossible number.");
                 continue;
             }
 
-            register.addGradeBasedOnPoints(points);
+            this.register.addGradeBasedOnPoints(points);
+            System.out.println("The average of points: " + register.averageOfPoints());
+            System.out.println("The average of grades: " + register.averageOfGrades());
         }
     }
 
@@ -38,19 +43,18 @@ public class UserInterface {
         while (grade >= 0) {
             int stars = register.numberOfGrades(grade);
             System.out.print(grade + ": ");
-            printStars(stars);
+            printsStars(stars);
             System.out.println("");
 
-            grade = grade -1;
+            grade = grade - 1;
         }
+
     }
 
-    public static void printStars(int stars) {
+    public static void printsStars(int stars) {
         while (stars > 0) {
             System.out.print("*");
             stars--;
         }
     }
 }
-
-
